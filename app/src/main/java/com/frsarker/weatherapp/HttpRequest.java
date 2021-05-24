@@ -8,8 +8,8 @@ import java.net.URL;
 
 public class HttpRequest {
     public static String excuteGet(String targetURL) {
-        URL url;
-        HttpURLConnection connection = null;
+        URL url; //url 객체 생성
+        HttpURLConnection connection = null; //url에 연결된 객체 생성
         try {
             url = new URL(targetURL);
             connection = (HttpURLConnection) url.openConnection();

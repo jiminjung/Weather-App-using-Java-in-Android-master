@@ -28,6 +28,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.frsarker.weatherapp.PrefaddressActivity" />
+        <activity android:name="com.frsarker.weatherapp.SettingNotificationActivity" />
     </application>
 
 </manifest>

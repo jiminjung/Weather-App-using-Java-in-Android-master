@@ -1,4 +1,4 @@
-#Tue May 18 21:04:12 KST 2021
-base.0=C\:\\Users\\jimin\\Weather-App-using-Java-in-Android-master\\Weather-App-using-Java-in-Android-master\\app\\build\\intermediates\\dex\\debug\\out\\classes.dex
+#Mon May 24 20:34:51 KST 2021
+base.0=C\:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\build\\intermediates\\dex\\debug\\out\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
