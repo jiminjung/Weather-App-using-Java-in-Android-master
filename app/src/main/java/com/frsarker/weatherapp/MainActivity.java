@@ -22,6 +22,7 @@ import android.widget.TextView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -41,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
      DrawerLayout drawerLayout;
      Toolbar toolbar;
 
-    TextView addressTxt, updated_atTxt, statusTxt, tempTxt, temp_minTxt, temp_maxTxt, sunriseTxt,
-            sunsetTxt, windTxt, pressureTxt, humidityTxt;
+    TextView addressTxt, statusTxt, tempTxt, temp_minTxt, temp_maxTxt, sunriseTxt,
+            sunsetTxt, windTxt, pressureTxt, humidityTxt, updated_atTxt;
 
     private ArrayList<MainWeatherData> arrayList;
     private  MainAdapter mainAdapter;
@@ -68,12 +69,8 @@ public class MainActivity extends AppCompatActivity {
         linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-
+        CITY = "Seoul";
         arrayList = new ArrayList<>();
-        mainAdapter = new MainAdapter(arrayList);
-        recyclerView.setAdapter(mainAdapter);
-
-        MainWeatherData newData = new MainWeatherData(R.drawable.humidity, "sunset", "06:40 AM");
 
 
         ivMenu = findViewById(R.id.iv_menu);
@@ -84,9 +81,6 @@ public class MainActivity extends AppCompatActivity {
         navigationView = (NavigationView) findViewById(R.id.navigation);
 
         setSupportActionBar(toolbar);
-
-        arrayList.add(newData);
-        mainAdapter.notifyDataSetChanged();
 
         searchTxt = findViewById(R.id.search_address);
         addressTxt = findViewById(R.id.address);
@@ -143,6 +137,8 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        new weatherTask().execute();
     }
 
     class weatherTask extends AsyncTask<String, Void, String> {
@@ -156,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         protected String doInBackground(String... args) {
-            String response = HttpRequest.excuteGet("https://api.openweathermap.org/data/2.5/weather?q=" + CITY + "&units=metric&appid=" + API);
+            String response = HttpRequest.excuteGet("https://api.openweathermap.org/data/2.5/forecast?q=" + CITY + "&units=metric&appid=" + API);
             return response;
         }
          //백그라운드 작업이 끝난 뒤 호출, 메인 스레드에서 실행
@@ -165,48 +161,76 @@ public class MainActivity extends AppCompatActivity {
             updateWeather(result);
     }
 }
+        public void updateWeather(String result) {
+            try {
+                JSONObject jsonObj = new JSONObject(result);
+                String list = jsonObj.getString("list");
+                JSONArray jsonArray = new JSONArray(list);
+//                JSONObject sys = jsonObj.getJSONObject("sys");
+//                JSONObject wind = jsonObj.getJSONObject("wind");
+//                JSONObject weather = jsonObj.getJSONArray("weather").getJSONObject(0);
+//                JSONArray weather = list.getJSONArray(0).get
 
-    public void updateWeather(String result) {
-        try {
-            JSONObject jsonObj = new JSONObject(result);
-            JSONObject main = jsonObj.getJSONObject("main");
-            JSONObject wind = jsonObj.getJSONObject("wind");
-            JSONObject weather = jsonObj.getJSONArray("weather").getJSONObject(0);
+                /* Populating extracted data into our views */
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject obj = jsonArray.getJSONObject(i);
 
-            Long updatedAt = jsonObj.getLong("dt");
-            String updatedAtText = "Updated at: " + new SimpleDateFormat("dd/MM/yyyy hh:mm a", Locale.ENGLISH).format(new Date(updatedAt * 1000));
-            String temp = main.getString("temp") + "°C";
-            String tempMin = "Min Temp: " + main.getString("temp_min") + "°C";
-            String tempMax = "Max Temp: " + main.getString("temp_max") + "°C";
-            String pressure = main.getString("pressure");
-            String humidity = main.getString("humidity");
-            Long sunrise = jsonObj.getLong("sunrise");
-            Long sunset = jsonObj.getLong("sunset");
-            String windSpeed = wind.getString("speed");
-            String weatherDescription = weather.getString("description");
-            String address = jsonObj.getString("name") + ", " + jsonObj.getString("country");
+                    JSONObject main = obj.getJSONObject("main");
+                    JSONObject wind = obj.getJSONObject("wind");
+                    JSONObject weather = obj.getJSONArray("weather").getJSONObject(0);
 
-            /* Populating extracted data into our views */
-            addressTxt.setText(address);
-            updated_atTxt.setText(updatedAtText);
-            statusTxt.setText(weatherDescription.toUpperCase());
-            tempTxt.setText(temp);
-            temp_minTxt.setText(tempMin);
-            temp_maxTxt.setText(tempMax);
-            sunriseTxt.setText(new SimpleDateFormat("hh:mm a", Locale.ENGLISH).format(new Date(sunrise * 1000)));
-            sunsetTxt.setText(new SimpleDateFormat("hh:mm a", Locale.ENGLISH).format(new Date(sunset * 1000)));
-            windTxt.setText(windSpeed);
-            pressureTxt.setText(pressure);
-            humidityTxt.setText(humidity);
+                    Long updatedAt = obj.getLong("dt");
+                    String updatedAtText = "Updated at: " + new SimpleDateFormat("dd/MM/yyyy hh:mm a", Locale.ENGLISH).format(new Date(updatedAt * 1000));
+                    String temp = main.getString("temp") + "°C";
+                    String tempMin = "Min Temp: " + main.getString("temp_min") + "°C";
+                    String tempMax = "Max Temp: " + main.getString("temp_max") + "°C";
+                    String pressure = main.getString("pressure");
+                    String humidity = main.getString("humidity");
 
-            /* Views populated, Hiding the loader, Showing the main design */
-            findViewById(R.id.loader).setVisibility(View.GONE);
-            findViewById(R.id.mainContainer).setVisibility(View.VISIBLE);
+                    String windSpeed = wind.getString("speed");
+                    String weatherDescription = weather.getString("description");
+                    String dt_txt = obj.getString("dt_txt"); //시간 설정
 
-        } catch (JSONException e) {
-            findViewById(R.id.loader).setVisibility(View.GONE);
-            findViewById(R.id.errorText).setVisibility(View.VISIBLE);
+                    arrayList.add(new MainWeatherData(temp, pressure));
+                    drawRecyclerView();
+                    /* Populating extracted data into our views */
+                    if (i == 1) {
+                        updated_atTxt.setText(updatedAtText);
+                        statusTxt.setText(weatherDescription.toUpperCase());
+                        tempTxt.setText(temp);
+                        temp_minTxt.setText(tempMin);
+                        temp_maxTxt.setText(tempMax);
+                        windTxt.setText(windSpeed);
+                        pressureTxt.setText(pressure);
+                        humidityTxt.setText(humidity);
+
+                    }
+                    /* Views populated, Hiding the loader, Showing the main design */
+                }
+                JSONObject city = jsonObj.getJSONObject("city");
+                String address = city.getString("name") + ", " + city.getString("country");
+                Long sunrise = city.getLong("sunrise");
+                Long sunset = city.getLong("sunset");
+                addressTxt.setText(address);
+                sunriseTxt.setText(new SimpleDateFormat("hh:mm a", Locale.ENGLISH).format(new Date(sunrise * 1000)));
+                sunsetTxt.setText(new SimpleDateFormat("hh:mm a", Locale.ENGLISH).format(new Date(sunset * 1000)));
+
+                findViewById(R.id.loader).setVisibility(View.GONE);
+                findViewById(R.id.mainContainer).setVisibility(View.VISIBLE);
+
+            } catch (JSONException e) {
+                findViewById(R.id.loader).setVisibility(View.GONE);
+                findViewById(R.id.errorText).setVisibility(View.VISIBLE);
+            }
         }
-      }
-    }
+            public void drawRecyclerView () {
+                linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+                recyclerView.setLayoutManager(linearLayoutManager);
+                linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+                mainAdapter = new MainAdapter(arrayList);
+                recyclerView.setAdapter(mainAdapter);
+//            mainAdapter.notifyDataSetChanged();
+            }
+
+        }
 

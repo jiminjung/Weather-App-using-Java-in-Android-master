@@ -1,9 +1,9 @@
 package com.frsarker.weatherapp;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,62 +11,57 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHolder> {
+public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
+    ArrayList<MainWeatherData> items;
 
-    private ArrayList<MainWeatherData> arrayList;
-
-    public MainAdapter(ArrayList<MainWeatherData> arrayList) {
-        this.arrayList = arrayList;
+    public MainAdapter(ArrayList<MainWeatherData> items) {
+        this.items = items;
     }
 
     @NonNull
     @Override
-    public MainAdapter.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list,parent, false);
-        CustomViewHolder holder = new CustomViewHolder(view);
-        return holder;
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View itemview = inflater.inflate(R.layout.item_list, parent,false);
+        return new ViewHolder(itemview);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final MainAdapter.CustomViewHolder holder, int position) {
-        holder.profile.setImageResource(arrayList.get(position).getProfile());
-        holder.name.setText(arrayList.get(position).getName());
-        holder.time.setText(arrayList.get(position).getTime());
-
-        holder.itemView.setTag(position);
-        holder.itemView.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                String curName = holder.name.getText().toString();
-                //   Toast.makeText(v.getContext().curName, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener(){
-            public boolean onLongClick(View v){
-                return true;
-            }
-        });
-
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        MainWeatherData item = items.get(position);
+        holder.setItem(item);
     }
 
     @Override
     public int getItemCount() {
-        return (null != arrayList ? arrayList.size() : 0);
+        return items.size();
     }
 
-    public class CustomViewHolder extends RecyclerView.ViewHolder {
+    public void addItem(MainWeatherData item){
+        items.add(item);
+    }
 
-        protected ImageView profile;
-        protected TextView name;
-        protected  TextView time;
+    public void setItems(ArrayList<MainWeatherData> items){
+        this.items = items;
+    }
 
-        public CustomViewHolder(@NonNull View itemView) {
-            super(itemView);
-            this.profile = (ImageView)itemView.findViewById(R.id.profile);
-            this.name = (TextView)itemView.findViewById(R.id.name);
-            this.time = (TextView)itemView.findViewById(R.id.time);
+    public MainWeatherData getWeather(int position) {
+        return items.get(position);
+    }
 
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView temp;
+        TextView pressure;
+
+        public ViewHolder(View itemview) {
+            super(itemview);
+            pressure = itemview.findViewById(R.id.recy_pressure);
+            temp = itemview.findViewById(R.id.recy_temp);
+        }
+
+        public void setItem(MainWeatherData item) {
+            temp.setText(item.getTemp());
+            pressure.setText(item.getPressure());
         }
     }
 }

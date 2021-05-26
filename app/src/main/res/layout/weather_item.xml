@@ -20,17 +20,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
+
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:padding="5dp"
                 app:srcCompat="@drawable/ic_liked"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
+
               <TextView
                 android:id="@+id/pref_address"
                 android:layout_width="match_parent"
@@ -39,16 +42,8 @@
                 android:textSize="22sp"
                 android:textColor="#FF00FF"
                 android:maxLines="1"/>
+
               <TextView
-                    android:id="@+id/pref_temperature"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="온도"
-                    android:textSize="16sp"
-                    android:textColor="#FF00FF"
-                    android:maxLines="1"/>
-                <TextView
                     android:id="@+id/pref_temperature"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

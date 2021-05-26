@@ -1,37 +1,29 @@
 package com.frsarker.weatherapp;
 
 public class MainWeatherData {
-    private  int profile;
-    private  String name;
-    private  String time;
+//    private  int profile;
+    private  String temp;
+    private  String pressure;
 
-    public MainWeatherData(int profile, String name, String time) {
-        this.profile = profile;
-        this.name = name;
-        this.time = time;
+    public MainWeatherData(String temp, String pressure) {
+        this.temp = temp;
+        this.pressure = pressure;
     }
 
-    public int getProfile() {
-        return profile;
+    public void setTemp(String temp){
+        this.temp= temp;
+    }
+    public String getTemp(){
+        return temp;
     }
 
-    public void setProfile(int profile) {
-        this.profile = profile;
+    public void setPressure(String pressure){
+        this.pressure = pressure;
     }
 
-    public String getName() {
-        return name;
+    public String getPressure(){
+        return pressure;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
 }

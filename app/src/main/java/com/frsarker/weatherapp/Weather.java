@@ -8,21 +8,16 @@ import java.util.Locale;
 
 public class Weather {
     String temp;
-    String feelstemp;
+
     String address;
 
-    public Weather(String temp, String feelstemp, String address){
+    public Weather(String temp,String address){
         this.temp = temp;
-        this.feelstemp = feelstemp;
         this.address = address;
     }
 
     public void setTemp(String temp){
         this.temp = temp;
-    }
-
-    public void setFeelstemp(String feelstemp){
-        this.feelstemp = feelstemp;
     }
 
     public void setAddress(String address){
@@ -31,10 +26,6 @@ public class Weather {
 
     public String getTemp(){
         return temp;
-    }
-
-    public String getFeelstemp(){
-        return feelstemp;
     }
 
     public String getAddress(){

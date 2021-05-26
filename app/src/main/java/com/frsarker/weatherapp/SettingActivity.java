@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +15,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
@@ -28,14 +30,11 @@ public class SettingActivity extends AppCompatActivity implements TimePickerDial
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
         setContentView(R.layout.activity_settings);
-
 
         mTextView =  findViewById(R.id.textView);
 
-        Button button = (Button) findViewById(R.id.button_timepicker);
+        Button button = (Button)findViewById(R.id.button_timepicker);
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -55,6 +54,7 @@ public class SettingActivity extends AppCompatActivity implements TimePickerDial
         });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         Calendar c = Calendar.getInstance();
@@ -73,6 +73,7 @@ public class SettingActivity extends AppCompatActivity implements TimePickerDial
         mTextView.setText(timeText);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void startAlarm(Calendar c){
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, AlertReceiver.class);

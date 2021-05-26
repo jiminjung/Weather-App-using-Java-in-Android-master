@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_location.png.flat",
-        "source": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\src\\main\\res\\drawable\\location.png"
-    },
-    {
         "merged": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_launcher_background.png.flat",
         "source": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_location.png.flat",
+        "source": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\src\\main\\res\\drawable\\location.png"
     },
     {
         "merged": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ic_launcher_foreground.xml.flat",
@@ -76,8 +76,8 @@
         "source": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\src\\main\\res\\layout\\weather_item.xml"
     },
     {
-        "merged": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_settingnotification.xml.flat",
-        "source": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\src\\main\\res\\layout\\activity_settingnotification.xml"
+        "merged": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_weather.png.flat",
+        "source": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\src\\main\\res\\drawable\\weather.png"
     },
     {
         "merged": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_toolbar_main.xml.flat",

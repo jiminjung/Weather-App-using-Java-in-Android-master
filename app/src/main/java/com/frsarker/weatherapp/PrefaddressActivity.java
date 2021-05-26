@@ -121,14 +121,14 @@ public class PrefaddressActivity extends AppCompatActivity {
     }
 
     public void processResponse(String response) {
-        try {
+        try{
             JSONObject jsonObj = new JSONObject(response);
             JSONObject main = jsonObj.getJSONObject("main");
             String temp = main.getString("temp") + "°C";
             String feelslike = main.getString("feels_like") + "°C";
             String address = jsonObj.getString("name");
 
-            list.add(new Weather(temp, feelslike, address));
+            list.add(new Weather(temp, address));
             drawRecyclerView();
         } catch (JSONException e) {
             e.printStackTrace();
