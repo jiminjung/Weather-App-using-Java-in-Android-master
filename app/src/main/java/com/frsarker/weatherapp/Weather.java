@@ -7,18 +7,38 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Weather {
-    String wind;
-    String weather;
     String temp;
-    Long updatedAt;
-    String updatedAtText;
-    String tempMin;
-    String tempMax;
-    String pressure;
-    String humidity;
-    Long sunrise;
-    Long sunset;
-    String windSpeed;
-    String weatherDescription ;
+    String feelstemp;
     String address;
+
+    public Weather(String temp, String feelstemp, String address){
+        this.temp = temp;
+        this.feelstemp = feelstemp;
+        this.address = address;
+    }
+
+    public void setTemp(String temp){
+        this.temp = temp;
+    }
+
+    public void setFeelstemp(String feelstemp){
+        this.feelstemp = feelstemp;
+    }
+
+    public void setAddress(String address){
+        this.address = address;
+    }
+
+    public String getTemp(){
+        return temp;
+    }
+
+    public String getFeelstemp(){
+        return feelstemp;
+    }
+
+    public String getAddress(){
+        return address;
+    }
+
 }

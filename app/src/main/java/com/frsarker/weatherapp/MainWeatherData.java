@@ -1,11 +1,11 @@
 package com.frsarker.weatherapp;
 
-public class NewData {
+public class MainWeatherData {
     private  int profile;
     private  String name;
     private  String time;
 
-    public NewData(int profile, String name, String time) {
+    public MainWeatherData(int profile, String name, String time) {
         this.profile = profile;
         this.name = name;
         this.time = time;

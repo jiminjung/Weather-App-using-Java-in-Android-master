@@ -6,33 +6,24 @@
     android:layout_width="match_parent"
     android:layout_height="70dp"
     app:contentInsetStart="0dp"
-    android:background="#122259">
+    android:background="@null">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginLeft="15dp">
 
         <ImageView
             android:id="@+id/iv_menu"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            app:srcCompat="@drawable/ic_menu"
-            android:layout_alignParentLeft="true" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="12dp"
+            app:srcCompat="@drawable/ic_menu" />
 
-        <ImageView
-            android:id="@+id/iv_liked"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            app:srcCompat="@drawable/ic_liked"
-            android:layout_alignParentRight="true" />
 
     </RelativeLayout>
 </androidx.appcompat.widget.Toolbar>

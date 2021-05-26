@@ -29,7 +29,16 @@
             </intent-filter>
         </activity>
         <activity android:name="com.frsarker.weatherapp.PrefaddressActivity" />
-        <activity android:name="com.frsarker.weatherapp.SettingNotificationActivity" />
+        <activity android:name="com.frsarker.weatherapp.SettingActivity" />
+
+        <receiver
+            android:name="com.frsarker.weatherapp.AlertReceiver"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

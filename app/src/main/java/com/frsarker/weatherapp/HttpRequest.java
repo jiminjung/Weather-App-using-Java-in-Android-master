@@ -1,5 +1,8 @@
 package com.frsarker.weatherapp;
 
+import android.os.Bundle;
+import android.os.Message;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -30,7 +33,8 @@ public class HttpRequest {
                 response.append('\r');
             }
             rd.close();
-            return response.toString();
+            return response.toString(); // json 파일들을 string으로 변환
+
         } catch (Exception e) {
             e.printStackTrace();
             return null;

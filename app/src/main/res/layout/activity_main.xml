@@ -43,7 +43,6 @@
                 android:id="@+id/search_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:iconifiedByDefault="false" />
 
             <TextView
@@ -61,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="20 April 2012, 20:08 PM 샘플입니다"
+                android:text="20 April 2012, 20:08 PM"
                 android:textSize="14dp" />
 
             </LinearLayout>
@@ -72,7 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/addressContainer"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:orientation="vertical">
 
             <TextView
@@ -80,7 +79,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Clear Sky 날씨 정보가 표출이됩니다"
+                android:text="Clear Sky"
                 android:textSize="18dp" />
 
             <TextView
@@ -349,7 +348,7 @@
                     <ImageView
                         android:layout_width="25dp"
                         android:layout_height="25dp"
-                        android:src="@drawable/info"
+                        android:src="@drawable/wind"
                         android:tint="#FFFFFF" />
 
                     <Space
@@ -359,14 +358,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Created By"
+                        android:text="Windspeed"
                         android:textSize="12dp" />
 
                     <TextView
-                        android:id="@+id/about"
+                        android:id="@+id/windspeed"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="frsarker"
+                        android:text="123"
                         android:textSize="14dp" />
                 </LinearLayout>
             </LinearLayout>

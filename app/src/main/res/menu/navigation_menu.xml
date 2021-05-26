@@ -3,11 +3,11 @@
         <group android:checkableBehavior="single">
         <item
             android:id="@+id/item1"
-            android:icon="@drawable/humidity"
-            android:title="선호지역" />
-        <item
+            android:icon="@drawable/location"
+            android:title="선호 지역" />
+         <item
             android:id="@+id/item2"
-            android:icon="@drawable/humidity"
-            android:title="알림 설정" />
+            android:icon="@drawable/notification"
+            android:title="알림 설정"/>
         </group>
 </menu>

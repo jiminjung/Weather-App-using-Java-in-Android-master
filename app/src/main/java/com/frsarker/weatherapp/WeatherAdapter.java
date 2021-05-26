@@ -1,5 +1,8 @@
 package com.frsarker.weatherapp;
 
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Color;
 import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,14 +16,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHolder> {
-    ArrayList<Weather> items = new ArrayList<Weather>();
+    ArrayList<Weather> items;
+    Context context;
+
+    public WeatherAdapter(Context context, ArrayList<Weather> items) {
+        this.context = context;
+        this.items = items;
+    }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View itemview = inflater.inflate(R.layout.weather_item, parent,false);
-
         return new ViewHolder(itemview);
     }
 
@@ -32,6 +40,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
 
     @Override
     public int getItemCount() {
+
         return items.size();
     }
 
@@ -47,20 +56,18 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-//        ImageView weatherImage;
         TextView temp;
         TextView address;
 
         public ViewHolder(View itemview) {
             super(itemview);
-
+            address = itemview.findViewById(R.id.pref_address);
             temp = itemview.findViewById(R.id.pref_temperature);
-            address = itemview.findViewById(R.id.pref_title);
         }
 
         public void setItem(Weather item) {
-            temp.setText(item.temp);
-            address.setText(item.address);
+            temp.setText(item.getTemp());
+            address.setText(item.getAddress());
         }
     }
 }

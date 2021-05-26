@@ -4,19 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
-    android:background="@color/colorofhamburgermenu">
+    android:background="@drawable/bg_gradient">
 
     <ImageView
         android:layout_width="180dp"
         android:layout_height="130dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="15dp"
-        android:background="@drawable/hamburgerimg"/>
+        android:background="@drawable/hamburgerback"/>
 
     <TextView
-        android:layout_width="180dp"
-        android:layout_height="130dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Weather app"
-        android:textSize="@android:dimen/app_icon_size"
-/>
+        android:gravity="center"
+        android:textSize="25sp" />
+
 </LinearLayout>

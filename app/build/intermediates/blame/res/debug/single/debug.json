@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_location.png.flat",
+        "source": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\src\\main\\res\\drawable\\location.png"
+    },
+    {
         "merged": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_launcher_background.png.flat",
         "source": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_launcher_background.png"
     },
@@ -14,6 +18,10 @@
     {
         "merged": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_sunset.png.flat",
         "source": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\src\\main\\res\\drawable\\sunset.png"
+    },
+    {
+        "merged": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_hamburgerback.png.flat",
+        "source": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\src\\main\\res\\drawable\\hamburgerback.png"
     },
     {
         "merged": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_liked.png.flat",
@@ -100,10 +108,6 @@
         "source": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\src\\main\\res\\menu\\navigation_menu.xml"
     },
     {
-        "merged": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_hamburgerimg.PNG.flat",
-        "source": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\src\\main\\res\\drawable\\hamburgerimg.PNG"
-    },
-    {
         "merged": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_pressure.png.flat",
         "source": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\src\\main\\res\\drawable\\pressure.png"
     },
@@ -112,8 +116,16 @@
         "source": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
     },
     {
+        "merged": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_notification.png.flat",
+        "source": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\src\\main\\res\\drawable\\notification.png"
+    },
+    {
         "merged": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_info.png.flat",
         "source": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\src\\main\\res\\drawable\\info.png"
+    },
+    {
+        "merged": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_addbox_dialog.xml.flat",
+        "source": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\src\\main\\res\\layout\\addbox_dialog.xml"
     },
     {
         "merged": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_list.xml.flat",
@@ -126,6 +138,10 @@
     {
         "merged": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_wind.png.flat",
         "source": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\src\\main\\res\\drawable\\wind.png"
+    },
+    {
+        "merged": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_settings.xml.flat",
+        "source": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\src\\main\\res\\layout\\activity_settings.xml"
     },
     {
         "merged": "C:\\mobile_prj\\Weather-App-using-Java-in-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
@@ -31,24 +31,33 @@
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
-            <TextView
-                android:id="@+id/pref_title"
+              <TextView
+                android:id="@+id/pref_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="도시"
                 android:textSize="22sp"
                 android:textColor="#FF00FF"
                 android:maxLines="1"/>
-            <TextView
+              <TextView
                     android:id="@+id/pref_temperature"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:gravity="right"
-                    android:text="날씨"
+                    android:text="온도"
                     android:textSize="16sp"
                     android:textColor="#FF00FF"
                     android:maxLines="1"/>
+                <TextView
+                    android:id="@+id/pref_temperature"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="온도"
+                    android:textSize="16sp"
+                    android:textColor="#FF00FF"
+                    android:maxLines="1"/>
+
             </LinearLayout>
         </LinearLayout>
 

@@ -1,8 +1,6 @@
 package com.frsarker.weatherapp;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -10,20 +8,16 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.JsonReader;
 import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener;
@@ -50,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     TextView addressTxt, updated_atTxt, statusTxt, tempTxt, temp_minTxt, temp_maxTxt, sunriseTxt,
             sunsetTxt, windTxt, pressureTxt, humidityTxt;
 
-    private ArrayList<NewData> arrayList;
+    private ArrayList<MainWeatherData> arrayList;
     private  MainAdapter mainAdapter;
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
@@ -70,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerView = (RecyclerView)findViewById(R.id.rv);
+        recyclerView = (RecyclerView) findViewById(R.id.rv);
         linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -79,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         mainAdapter = new MainAdapter(arrayList);
         recyclerView.setAdapter(mainAdapter);
 
-        NewData newData = new NewData(R.drawable.humidity, "sunset", "06:40 AM");
+        MainWeatherData newData = new MainWeatherData(R.drawable.humidity, "sunset", "06:40 AM");
 
 
         ivMenu = findViewById(R.id.iv_menu);
@@ -87,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.drawerLayout);
         toolbar = findViewById(R.id.toolbar);
-        navigationView = (NavigationView)findViewById(R.id.navigation);
+        navigationView = (NavigationView) findViewById(R.id.navigation);
 
         setSupportActionBar(toolbar);
 
@@ -114,26 +108,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        likedMenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(CITY == null){
-                    Toast.makeText(MainActivity.this, "지역을 검색해주세요.", Toast.LENGTH_LONG).show();
-                }
-                else {
-                    Toast.makeText(MainActivity.this, "선호지역에 추가 되었습니다.", Toast.LENGTH_LONG).show();
-                    SharedPreferences pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = pref.edit();
-                    editor.putString("city", CITY);
-                    editor.commit();
-                }
-              }
-        });
-
         navigationView.bringToFront();
-//        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,0,0);
-//        drawerLayout.addDrawerListener(actionBarDrawerToggle);
-//        actionBarDrawerToggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(new OnNavigationItemSelectedListener() {
             @Override
@@ -148,24 +123,23 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
                 if (id == R.id.item2) {
-                    Intent i = new Intent(getApplicationContext(), SettingNotificationActivity.class);
+                    Intent i = new Intent(getApplicationContext(), SettingActivity.class);
                     startActivity(i);
                 }
-                    return true;
+                return true;
             }
         });
 
         searchTxt.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override //입력받은 문자열 처리
-            public boolean onQueryTextSubmit(String query){
+            @Override
+            public boolean onQueryTextSubmit(String query) {
                 CITY = query;
                 new weatherTask().execute(); //thread 실행
                 return true;
             }
 
-            @Override //입력란의 문자열이 바뀔 때 처리
-            public boolean onQueryTextChange(String newText) {
-                //리스트뷰 구현
+            @Override
+            public boolean onQueryTextChange(String s) {
                 return false;
             }
         });
@@ -185,10 +159,10 @@ public class MainActivity extends AppCompatActivity {
             String response = HttpRequest.excuteGet("https://api.openweathermap.org/data/2.5/weather?q=" + CITY + "&units=metric&appid=" + API);
             return response;
         }
-         //백그라운드 작업이 긑난 뒤 호출, 메인 스레드에서 실행
+         //백그라운드 작업이 끝난 뒤 호출, 메인 스레드에서 실행
         @Override
         protected void onPostExecute(String result) {
-                updateWeather(result);
+            updateWeather(result);
     }
 }
 
@@ -196,7 +170,6 @@ public class MainActivity extends AppCompatActivity {
         try {
             JSONObject jsonObj = new JSONObject(result);
             JSONObject main = jsonObj.getJSONObject("main");
-            JSONObject sys = jsonObj.getJSONObject("sys");
             JSONObject wind = jsonObj.getJSONObject("wind");
             JSONObject weather = jsonObj.getJSONArray("weather").getJSONObject(0);
 
@@ -207,13 +180,11 @@ public class MainActivity extends AppCompatActivity {
             String tempMax = "Max Temp: " + main.getString("temp_max") + "°C";
             String pressure = main.getString("pressure");
             String humidity = main.getString("humidity");
-
-            Long sunrise = sys.getLong("sunrise");
-            Long sunset = sys.getLong("sunset");
+            Long sunrise = jsonObj.getLong("sunrise");
+            Long sunset = jsonObj.getLong("sunset");
             String windSpeed = wind.getString("speed");
             String weatherDescription = weather.getString("description");
-
-            String address = jsonObj.getString("name") + ", " + sys.getString("country");
+            String address = jsonObj.getString("name") + ", " + jsonObj.getString("country");
 
             /* Populating extracted data into our views */
             addressTxt.setText(address);
@@ -236,6 +207,6 @@ public class MainActivity extends AppCompatActivity {
             findViewById(R.id.loader).setVisibility(View.GONE);
             findViewById(R.id.errorText).setVisibility(View.VISIBLE);
         }
-    }
+      }
     }
 
