@@ -39,6 +39,27 @@
             android:orientation="vertical"
             android:layout_below="@+id/toolbar">
 
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello World!"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:layout_constraintBottom_toTopOf="@+id/button"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/refresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="새로고침"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textview" />
+
             <SearchView
                 android:id="@+id/search_address"
                 android:layout_width="match_parent"
@@ -157,7 +178,7 @@
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:src="@drawable/sunrise"
-                        android:tint="#FFFFFF" />
+                        app:tint="#FFFFFF" />
 
                     <Space
                         android:layout_width="wrap_content"
@@ -194,7 +215,7 @@
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:src="@drawable/sunset"
-                        android:tint="#FFFFFF" />
+                        app:tint="#FFFFFF" />
 
                     <Space
                         android:layout_width="wrap_content"
@@ -231,7 +252,7 @@
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:src="@drawable/wind"
-                        android:tint="#FFFFFF" />
+                        app:tint="#FFFFFF" />
 
                     <Space
                         android:layout_width="wrap_content"
@@ -275,7 +296,7 @@
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:src="@drawable/pressure"
-                        android:tint="#FFFFFF" />
+                        app:tint="#FFFFFF" />
 
                     <Space
                         android:layout_width="wrap_content"
@@ -312,7 +333,7 @@
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:src="@drawable/humidity"
-                        android:tint="#FFFFFF" />
+                        app:tint="#FFFFFF" />
 
                     <Space
                         android:layout_width="wrap_content"
@@ -349,7 +370,7 @@
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:src="@drawable/wind"
-                        android:tint="#FFFFFF" />
+                        app:tint="#FFFFFF" />
 
                     <Space
                         android:layout_width="wrap_content"
