@@ -1157,6 +1157,7 @@ id barrier
 id beginning
 id blocking
 id bottom
+id button
 id buttonPanel
 id button_timepicker
 id cancel_action
@@ -1234,6 +1235,7 @@ id line3
 id listMode
 id list_item
 id loader
+id location
 id mainContainer
 id masked
 id media_actions
@@ -1273,6 +1275,7 @@ id radio
 id recy_dtTxt
 id recy_temp
 id recyclerview
+id refresh
 id right
 id right_icon
 id right_side
@@ -1350,6 +1353,7 @@ id text_input_password_toggle
 id textinput_counter
 id textinput_error
 id textinput_helper_text
+id textview
 id time
 id title
 id titleDividerNoCustom
