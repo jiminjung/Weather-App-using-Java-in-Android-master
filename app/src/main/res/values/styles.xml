@@ -12,7 +12,7 @@
     <style name="MyAlertDialogStyle" parent="@style/Theme.AppCompat.Dialog.Alert">
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:typeface">monospace</item>
-        <item name="android:background">#9FAEA0</item>
+        <item name="android:background">#2196F3</item>
 
 
 

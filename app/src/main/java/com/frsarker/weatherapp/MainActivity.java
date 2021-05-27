@@ -28,6 +28,7 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             sunsetTxt, windTxt, pressureTxt, humidityTxt, updated_atTxt;
 
     private ArrayList<MainWeatherData> arrayList;
-    private  MainAdapter mainAdapter;
+    private MainAdapter mainAdapter;
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
 
@@ -166,10 +167,6 @@ public class MainActivity extends AppCompatActivity {
                 JSONObject jsonObj = new JSONObject(result);
                 String list = jsonObj.getString("list");
                 JSONArray jsonArray = new JSONArray(list);
-//                JSONObject sys = jsonObj.getJSONObject("sys");
-//                JSONObject wind = jsonObj.getJSONObject("wind");
-//                JSONObject weather = jsonObj.getJSONArray("weather").getJSONObject(0);
-//                JSONArray weather = list.getJSONArray(0).get
 
                 /* Populating extracted data into our views */
                 for (int i = 0; i < jsonArray.length(); i++) {
@@ -181,17 +178,19 @@ public class MainActivity extends AppCompatActivity {
 
                     Long updatedAt = obj.getLong("dt");
                     String updatedAtText = "Updated at: " + new SimpleDateFormat("dd/MM/yyyy hh:mm a", Locale.ENGLISH).format(new Date(updatedAt * 1000));
+                    String timeText = new SimpleDateFormat("hh:mm a", Locale.ENGLISH).format(new Date(updatedAt * 1000));
                     String temp = main.getString("temp") + "°C";
                     String tempMin = "Min Temp: " + main.getString("temp_min") + "°C";
                     String tempMax = "Max Temp: " + main.getString("temp_max") + "°C";
                     String pressure = main.getString("pressure");
                     String humidity = main.getString("humidity");
-
                     String windSpeed = wind.getString("speed");
                     String weatherDescription = weather.getString("description");
-                    String dt_txt = obj.getString("dt_txt"); //시간 설정
+                    String dt_txt = obj.getString("dt_txt");
+                    String weatherIconCode = weather.getString("icon");
+                    String profile = "http://openweathermap.org/img/w/" + weatherIconCode + ".png";
 
-                    arrayList.add(new MainWeatherData(temp, pressure));
+                    arrayList.add(new MainWeatherData(temp,timeText, profile));
                     drawRecyclerView();
                     /* Populating extracted data into our views */
                     if (i == 1) {
@@ -203,17 +202,17 @@ public class MainActivity extends AppCompatActivity {
                         windTxt.setText(windSpeed);
                         pressureTxt.setText(pressure);
                         humidityTxt.setText(humidity);
-
                     }
                     /* Views populated, Hiding the loader, Showing the main design */
                 }
+
                 JSONObject city = jsonObj.getJSONObject("city");
                 String address = city.getString("name") + ", " + city.getString("country");
                 Long sunrise = city.getLong("sunrise");
                 Long sunset = city.getLong("sunset");
                 addressTxt.setText(address);
-                sunriseTxt.setText(new SimpleDateFormat("hh:mm a", Locale.ENGLISH).format(new Date(sunrise * 1000)));
-                sunsetTxt.setText(new SimpleDateFormat("hh:mm a", Locale.ENGLISH).format(new Date(sunset * 1000)));
+                sunriseTxt.setText(new SimpleDateFormat("hh:mm a", Locale.KOREA).format(new Date(sunrise * 10000)));
+                sunsetTxt.setText(new SimpleDateFormat("hh:mm a", Locale.KOREA).format(new Date(sunset * 10000)));
 
                 findViewById(R.id.loader).setVisibility(View.GONE);
                 findViewById(R.id.mainContainer).setVisibility(View.VISIBLE);
@@ -229,7 +228,6 @@ public class MainActivity extends AppCompatActivity {
                 linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
                 mainAdapter = new MainAdapter(arrayList);
                 recyclerView.setAdapter(mainAdapter);
-//            mainAdapter.notifyDataSetChanged();
             }
 
         }

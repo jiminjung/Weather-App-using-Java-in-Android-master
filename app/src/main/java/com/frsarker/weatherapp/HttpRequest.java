@@ -11,8 +11,8 @@ import java.net.URL;
 
 public class HttpRequest {
     public static String excuteGet(String targetURL) {
-        URL url; //url 객체 생성
-        HttpURLConnection connection = null; //url에 연결된 객체 생성
+        URL url;
+        HttpURLConnection connection = null;
         try {
             url = new URL(targetURL);
             connection = (HttpURLConnection) url.openConnection();
@@ -33,7 +33,7 @@ public class HttpRequest {
                 response.append('\r');
             }
             rd.close();
-            return response.toString(); // json 파일들을 string으로 변환
+            return response.toString();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -45,3 +45,5 @@ public class HttpRequest {
         }
     }
 }
+
+

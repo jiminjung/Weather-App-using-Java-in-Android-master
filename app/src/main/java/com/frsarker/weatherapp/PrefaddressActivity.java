@@ -69,14 +69,13 @@ public class PrefaddressActivity extends AppCompatActivity {
                         Dialog f = (Dialog) dialog;
                         EditText input = (EditText) f.findViewById(R.id.dialog);
                         makeRequest(input.getText().toString());
-                        Toast.makeText(getApplicationContext(), "선호지역에 추가되었습니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "선호지역에 추가되었습니다.", Toast.LENGTH_LONG).show();
                     }
                 });
                 AlertDialog alertDialog = alert.create();
                 alertDialog.show();
             }
         });
-//        drawRecyclerView();
     }
 
     private void drawRecyclerView() {
@@ -124,11 +123,13 @@ public class PrefaddressActivity extends AppCompatActivity {
         try{
             JSONObject jsonObj = new JSONObject(response);
             JSONObject main = jsonObj.getJSONObject("main");
+            JSONObject weather = jsonObj.getJSONArray("weather").getJSONObject(0);
             String temp = main.getString("temp") + "°C";
-            String feelslike = main.getString("feels_like") + "°C";
             String address = jsonObj.getString("name");
+            String weatherIconCode = weather.getString("icon");
+            String profile = "http://openweathermap.org/img/w/" + weatherIconCode + ".png";
 
-            list.add(new Weather(temp, address));
+            list.add(new Weather(temp, address, profile));
             drawRecyclerView();
         } catch (JSONException e) {
             e.printStackTrace();

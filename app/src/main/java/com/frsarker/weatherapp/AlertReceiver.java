@@ -1,6 +1,3 @@
-package com.frsarker.weatherapp;
-
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -8,7 +5,10 @@ import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 
+import com.frsarker.weatherapp.NotificationHelper;
+
 public class AlertReceiver extends BroadcastReceiver {
+
     @Override
     public void onReceive(Context context, Intent intent) {
         Log.d("AlarmBroadcastReceiver", "onReceive");

@@ -14,6 +14,7 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -69,8 +70,8 @@ public class SettingActivity extends AppCompatActivity implements TimePickerDial
     private void updateTimeText(Calendar c){
         String timeText = "Alarm set for : ";
         timeText += DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
-
-        mTextView.setText(timeText);
+        Toast.makeText(this, timeText, Toast.LENGTH_SHORT).show();
+       // mTextView.setText(timeText);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -93,8 +94,8 @@ public class SettingActivity extends AppCompatActivity implements TimePickerDial
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
 
         alarmManager.cancel(pendingIntent);
-
-        mTextView.setText("Alarm canceled");
+        Toast.makeText(this, "Alarm canceled", Toast.LENGTH_SHORT).show();
+        //mTextView.setText("        Alarm canceled");
     }
 
 }

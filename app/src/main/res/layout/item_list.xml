@@ -18,8 +18,8 @@
         app:cardElevation="5dp">
 
         <LinearLayout
-            android:layout_width="60dp"
-            android:layout_height="80dp"
+            android:layout_width="70dp"
+            android:layout_height="90dp"
             android:background="#3CF1EBF1"
             android:gravity="center"
             android:orientation="vertical"
@@ -33,20 +33,20 @@
                 android:tint="#FFFFFF" />
 
             <TextView
-            android:id="@+id/recy_pressure"
+            android:id="@+id/recy_temp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="23도"
-            android:textSize="10sp" />
+            android:textSize="13sp" />
 
             <TextView
-                android:id="@+id/recy_temp"
+                android:id="@+id/recy_dtTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="06:40 AM"
-                android:textSize="10sp" />
+                android:textSize="13sp" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

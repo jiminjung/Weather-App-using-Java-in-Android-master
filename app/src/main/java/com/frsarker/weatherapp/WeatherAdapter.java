@@ -13,6 +13,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHolder> {
@@ -36,6 +38,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Weather item = items.get(position);
         holder.setItem(item);
+
     }
 
     @Override
@@ -58,16 +61,19 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView temp;
         TextView address;
+        ImageView imageProfile;
 
         public ViewHolder(View itemview) {
             super(itemview);
             address = itemview.findViewById(R.id.pref_address);
             temp = itemview.findViewById(R.id.pref_temperature);
+            imageProfile = itemview.findViewById(R.id.pref_weather);
         }
 
         public void setItem(Weather item) {
             temp.setText(item.getTemp());
             address.setText(item.getAddress());
+            Glide.with(this.itemView).load(item.getProfile()).into(imageProfile);
         }
     }
 }

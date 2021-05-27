@@ -4,10 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -51,17 +54,20 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView temp;
-        TextView pressure;
+        TextView time;
+        ImageView imageProfile;
 
         public ViewHolder(View itemview) {
             super(itemview);
-            pressure = itemview.findViewById(R.id.recy_pressure);
+            time = itemview.findViewById(R.id.recy_dtTxt);
             temp = itemview.findViewById(R.id.recy_temp);
+            imageProfile = itemview.findViewById(R.id.profile);
         }
 
         public void setItem(MainWeatherData item) {
             temp.setText(item.getTemp());
-            pressure.setText(item.getPressure());
+            time.setText(item.getTime());
+            Glide.with(this.itemView).load(item.getProfile()).into(imageProfile);
         }
     }
 }

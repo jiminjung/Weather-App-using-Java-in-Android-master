@@ -8,12 +8,13 @@ import java.util.Locale;
 
 public class Weather {
     String temp;
-
     String address;
+    String profile;
 
-    public Weather(String temp,String address){
+    public Weather(String temp,String address,String profile){
         this.temp = temp;
         this.address = address;
+        this.profile = profile;
     }
 
     public void setTemp(String temp){
@@ -24,12 +25,18 @@ public class Weather {
         this.address = address;
     }
 
+    public void setProfile(String weatherImage) {this.profile = weatherImage;}
+
     public String getTemp(){
         return temp;
     }
 
     public String getAddress(){
         return address;
+    }
+
+    public String getProfile(){
+        return profile;
     }
 
 }
