@@ -2,6 +2,7 @@
 <androidx.appcompat.widget.Toolbar
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="70dp"
@@ -23,6 +24,23 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="12dp"
             app:srcCompat="@drawable/ic_menu" />
+
+        <ImageButton
+            android:id="@+id/refresh"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginRight="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:adjustViewBounds="true"
+            android:background="@color/cardview_shadow_end_color"
+            android:padding="0dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/gps"
+            tools:src="@drawable/gps" />
 
 
     </RelativeLayout>

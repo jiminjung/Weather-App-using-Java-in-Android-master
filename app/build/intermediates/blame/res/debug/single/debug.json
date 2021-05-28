@@ -36,6 +36,10 @@
         "source": "D:\\HW\\wA\\Weather-App-using-Java-in-Android-master\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
     },
     {
+        "merged": "D:\\HW\\wA\\Weather-App-using-Java-in-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable_gps.png.flat",
+        "source": "D:\\HW\\wA\\Weather-App-using-Java-in-Android-master\\app\\src\\main\\res\\drawable\\gps.png"
+    },
+    {
         "merged": "D:\\HW\\wA\\Weather-App-using-Java-in-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\layout_toolbar_main.xml.flat",
         "source": "D:\\HW\\wA\\Weather-App-using-Java-in-Android-master\\app\\src\\main\\res\\layout\\toolbar_main.xml"
     },
