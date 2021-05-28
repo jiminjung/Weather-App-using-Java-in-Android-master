@@ -26,6 +26,7 @@ import android.widget.Button;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.LocationManager;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -88,8 +89,7 @@ public class MainActivity extends AppCompatActivity {
         }else {
             checkRunTimePermission();
         }
-        final TextView textview_address = findViewById(R.id.location);
-        Button refreshButton = findViewById(R.id.refresh);
+        ImageButton refreshButton = findViewById(R.id.refresh);
         recyclerView = (RecyclerView) findViewById(R.id.rv);
         linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -134,8 +134,6 @@ public class MainActivity extends AppCompatActivity {
                 gpsTracker = new getLocation(MainActivity.this);
                 double latitude = gpsTracker.getLatitude();
                 double longitude = gpsTracker.getLongitude();
-                //latitude = 35.137;
-                //longitude = 129.05;
                 String address = getCurrentAddress(latitude, longitude);
                 try {
                     addr = gg.getFromLocationName(address,7);
@@ -144,7 +142,6 @@ public class MainActivity extends AppCompatActivity {
                     if(curCity==null) curCity = res.getAdminArea();
                     CITY = curCity;
                     new weatherTask().execute();
-                    textview_address.setText(curCity);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -405,6 +402,5 @@ public class MainActivity extends AppCompatActivity {
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
                 || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
     }
-
         }
 
