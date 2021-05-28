@@ -36,10 +36,8 @@ public class getLocation extends Service implements LocationListener {
     public Location getLocation() {
         try {
             locationManager = (LocationManager) mContext.getSystemService(LOCATION_SERVICE);
-
             boolean isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
             boolean isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-
             if (!isGPSEnabled && !isNetworkEnabled) {
 
             } else {
@@ -48,19 +46,12 @@ public class getLocation extends Service implements LocationListener {
                         Manifest.permission.ACCESS_FINE_LOCATION);
                 int hasCoarseLocationPermission = ContextCompat.checkSelfPermission(mContext,
                         Manifest.permission.ACCESS_COARSE_LOCATION);
-
-
                 if (hasFineLocationPermission == PackageManager.PERMISSION_GRANTED &&
                         hasCoarseLocationPermission == PackageManager.PERMISSION_GRANTED) {
-
                     ;
                 } else
                     return null;
-
-
                 if (isNetworkEnabled) {
-
-
                     locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, MIN_TIME_BW_UPDATES, MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
 
                     if (locationManager != null)
@@ -73,7 +64,6 @@ public class getLocation extends Service implements LocationListener {
                         }
                     }
                 }
-
 
                 if (isGPSEnabled)
                 {
